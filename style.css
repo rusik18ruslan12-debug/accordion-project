@@ -23,6 +23,11 @@ body {
     background: white;
 }
 
+/* Скрываем радиокнопки */
+.accordion-input {
+    display: none;
+}
+
 .accordion-header {
     display: flex;
     align-items: center;
@@ -90,18 +95,27 @@ body {
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-.accordion-item.active .accordion-content {
-    max-height: 500px;
+/* Плавное раскрытие контента при активации радиокнопки */
+.accordion-input:checked ~ .accordion-content {
+    max-height: 500px; /* достаточно для большинства случаев */
     padding: 20px;
 }
 
-.accordion-item.active .full-img {
+/* Анимация появления изображения */
+.accordion-input:checked ~ .accordion-content .full-img {
     opacity: 1;
     transform: translateY(0);
 }
 
-.accordion-item.active .toggle-icon {
+/* Поворот иконки при активации */
+.accordion-input:checked ~ .accordion-header .toggle-icon {
     transform: rotate(45deg);
+}
+
+/* Стиль активного заголовка */
+.accordion-input:checked ~ .accordion-header {
+    background-color: #e6f7ff;
+    color: #0066cc;
 }
 
 /* Адаптивность и размер шрифта */
