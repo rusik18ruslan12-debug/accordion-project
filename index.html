@@ -3,54 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Современный аккордеон</title>
+    <title>Аккордеон</title>
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="accordion-container">
-        <div class="accordion-item">
-            <input type="radio" name="accordion" id="item1" class="accordion-input" checked>
-            <label for="item1" class="accordion-header">
-                <div class="header-content">
-                    <span class="accordion-text">Горы на закате</span>
-                    <img src="images/Gori.jpg" alt="Горы" class="preview-img">
-                </div>
-                <div class="toggle-icon">−</div>
-            </label>
+        <div class="accordion-item active">
+            <div class="accordion-header">
+                <span class="accordion-title">Заголовок 1</span>
+                <img src="preview1.jpg" alt="Превью 1" class="preview-img">
+                <div class="toggle-icon">+</div>
+            </div>
             <div class="accordion-content">
-                <img src="images/Gori.jpg" alt="Полный вид гор" class="full-img">
-                <p>Величественные горы на закате — идеальное место для отдыха и вдохновения. Кристально чистый воздух и потрясающие виды заряжают энергией на весь год.</p>
+                <img src="full1.jpg" alt="Полное изображение 1" class="full-img">
+                <p>Описание изображения 1</p>
             </div>
         </div>
 
         <div class="accordion-item">
-            <input type="radio" name="accordion" id="item2" class="accordion-input">
-            <label for="item2" class="accordion-header">
-                <div class="header-content">
-                    <span class="accordion-text">Спокойное море</span>
-            <img src="images/More.jpg" alt="Море" class="preview-img">
-                </div>
+            <div class="accordion-header">
+                <span class="accordion-title">Заголовок 2</span>
+                <img src="preview2.jpg" alt="Превью 2" class="preview-img">
                 <div class="toggle-icon">+</div>
-            </label>
+            </div>
             <div class="accordion-content">
-                <img src="images/More.jpg" alt="Полный вид моря" class="full-img">
-                <p>Спокойное море под ясным небом — символ гармонии и умиротворения. Шум волн и солёный бриз помогают забыть о повседневных заботах.</p>
+                <img src="full2.jpg" alt="Полное изображение 2" class="full-img">
+                <p>Описание изображения 2</p>
             </div>
         </div>
 
         <div class="accordion-item">
-            <input type="radio" name="accordion" id="item3" class="accordion-input">
-            <label for="item3" class="accordion-header">
-                <div class="header-content">
-                    <span class="accordion-text">Зелёный лес</span>
-            <img src="images/Les.jpg" alt="Лес" class="preview-img">
-                </div>
+            <div class="accordion-header">
+                <span class="accordion-title">Заголовок 3</span>
+                <img src="preview3.jpg" alt="Превью 3" class="preview-img">
                 <div class="toggle-icon">+</div>
-            </label>
+            </div>
             <div class="accordion-content">
-                <img src="images/Les.jpg" alt="Полный вид леса" class="full-img">
-                <p>Зелёный лес — лёгкие нашей планеты и источник жизненной энергии. Прогулка среди деревьев восстанавливает силы и проясняет мысли.</p>
+                <img src="full3.jpg" alt="Полное изображение 3" class="full-img">
+                <p>Описание изображения 3</p>
             </div>
         </div>
     </div>
