@@ -1,79 +1,9 @@
-Разберу проблему пошагово: сделаю чёрно‑белый стиль и исправлю работу аккордеона (чтобы текст выдвигался корректно).
-
-## HTML (index.html)
-
-```html
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Черно‑белый аккордеон</title>
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="accordion-container">
-        <div class="accordion-item">
-            <input type="radio" name="accordion" id="item1" class="accordion-input" checked>
-            <label for="item1" class="accordion-header">
-                <div class="header-content">
-                    <span class="accordion-text">Горы на закате</span>
-                    <img src="images/Gori.jpg" alt="Горы" class="preview-img">
-                </div>
-                <div class="toggle-icon">+</div>
-            </label>
-            <div class="accordion-content">
-                <img src="images/Gori.jpg" alt="Полный вид гор" class="full-img">
-                <p>Величественные горы на закате — идеальное место для отдыха и вдохновения. Кристально чистый воздух и потрясающие виды заряжают энергией на весь год.</p>
-            </div>
-        </div>
-
-        <div class="accordion-item">
-            <input type="radio" name="accordion" id="item2" class="accordion-input">
-            <label for="item2" class="accordion-header">
-                <div class="header-content">
-                    <span class="accordion-text">Спокойное море</span>
-            <img src="images/More.jpg" alt="Море" class="preview-img">
-                </div>
-                <div class="toggle-icon">+</div>
-            </label>
-            <div class="accordion-content">
-                <img src="images/More.jpg" alt="Полный вид моря" class="full-img">
-                <p>Спокойное море под ясным небом — символ гармонии и умиротворения. Шум волн и солёный бриз помогают забыть о повседневных заботах.</p>
-            </div>
-        </div>
-
-        <div class="accordion-item">
-            <input type="radio" name="accordion" id="item3" class="accordion-input">
-            <label for="item3" class="accordion-header">
-                <div class="header-content">
-                    <span class="accordion-text">Зелёный лес</span>
-            <img src="images/Les.jpg" alt="Лес" class="preview-img">
-                </div>
-                <div class="toggle-icon">+</div>
-            </label>
-            <div class="accordion-content">
-                <img src="images/Les.jpg" alt="Полный вид леса" class="full-img">
-                <p>Зелёный лес — лёгкие нашей планеты и источник жизненной энергии. Прогулка среди деревьев восстанавливает силы и проясняет мысли.</p>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
-```
-
-## CSS (style.css)
-
-```css
 :root {
-    --bg-color: #000;
-    --text-color: #fff;
-    --border-color: #444;
-    --accent-color: #fff;
+    --primary-color: #4a6fa5;
+    --text-color: #333;
+    --bg-color: #f8f9fa;
     --border-radius: 12px;
     --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    --shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -86,7 +16,6 @@ body {
     margin: 0;
     padding: 20px 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text-color);
 }
 
 .accordion-container {
@@ -99,14 +28,12 @@ body {
     margin-bottom: 20px;
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: var(--shadow);
-    background: #111;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: white;
     position: relative;
     transition: var(--transition);
-    border: 1px solid var(--border-color);
 }
 
-/* Скрываем радиокнопки */
 .accordion-input {
     display: none;
 }
@@ -119,16 +46,17 @@ body {
     cursor: pointer;
     transition: var(--transition);
     position: relative;
-    background: #222;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     border-left: 4px solid transparent;
 }
 
 @media (hover: hover) {
     .accordion-header:hover {
-        background: #333;
+        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
         transform: translateY(-3px);
-        box-shadow: 0 6px 25px rgba(255, 255, 255, 0.2);
-        border-left-color: var(--accent-color);
+        box-shadow: 0 6px 25px rgba(74, 111, 165, 0.2);
+        border-left-color: var(--primary-color);
+        cursor: pointer;
     }
 }
 
@@ -145,16 +73,16 @@ body {
     border-radius: 8px;
     margin-right: 20px;
     transition: var(--transition);
-    filter: grayscale(100%);
-    border: 2px solid #444;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    filter: grayscale(10%);
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 @media (hover: hover) {
     .accordion-header:hover .preview-img {
         filter: grayscale(0%);
         transform: scale(1.08) rotate(2deg);
-        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 }
 
@@ -163,17 +91,16 @@ body {
     font-weight: 600;
     color: var(--text-color);
     transition: var(--transition);
-    position: relative;
 }
 
 .toggle-icon {
     font-size: 24px;
     font-weight: bold;
-    color: var(--accent-color);
+    color: var(--primary-color);
     min-width: 24px;
     text-align: center;
     transition: var(--transition);
-    background: #333;
+    background: #f0f0f0;
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -187,7 +114,7 @@ body {
     overflow: hidden;
     padding: 0 25px;
     transition: max-height 0.5s ease, padding 0.5s ease;
-    background: #1a1a1a;
+    background: #fff;
 }
 
 .full-img {
@@ -196,23 +123,23 @@ body {
     transition: opacity 0.5s ease, transform 0.5s ease;
     border-radius: 8px;
     margin: 20px 0;
-    filter: grayscale(100%);
 }
 
 p {
     line-height: 1.6;
-    color: #ccc;
+    color: #555;
     margin: 0 0 20px 0;
 }
 
-/* Стили для активного элемента */
 .accordion-input:checked ~ .accordion-header {
-    background: #000;
-    border-left-color: var(--accent-color);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #6b8cbc 100%);
+    color: white;
+    border-left-color: #ff6b6b;
+}
+
+.accordion-input:checked ~ .accordion-header .accordion-text {
+    color: white;
 }
 
 .accordion-input:checked ~ .accordion-header .toggle-icon {
-    transform: rotate(45deg);
-    color: var(--accent-color);
-    background: #555;
-}
+    transform:
