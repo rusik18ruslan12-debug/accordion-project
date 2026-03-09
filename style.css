@@ -1,9 +1,84 @@
+## Полный обновлённый код аккордеона с улучшенной читаемостью
+
+### HTML (index.html)
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Современный аккордеон</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="accordion-container">
+        <div class="accordion-item">
+            <input type="radio" name="accordion" id="item1" class="accordion-input" checked>
+            <label for="item1" class="accordion-header">
+                <div class="header-content">
+                    <span class="accordion-text">Горы на закате</span>
+                    <img src="images/Gori.jpg" alt="Горы" class="preview-img">
+                </div>
+                <div class="toggle-icon">−</div>
+            </label>
+            <div class="accordion-content">
+                <img src="images/Gori.jpg" alt="Полный вид гор" class="full-img">
+                <p>Величественные горы на закате — идеальное место для отдыха и вдохновения. Кристально чистый воздух и потрясающие виды заряжают энергией на весь год.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <input type="radio" name="accordion" id="item2" class="accordion-input">
+            <label for="item2" class="accordion-header">
+                <div class="header-content">
+                    <span class="accordion-text">Спокойное море</span>
+            <img src="images/More.jpg" alt="Море" class="preview-img">
+                </div>
+                <div class="toggle-icon">+</div>
+            </label>
+            <div class="accordion-content">
+                <img src="images/More.jpg" alt="Полный вид моря" class="full-img">
+                <p>Спокойное море под ясным небом — символ гармонии и умиротворения. Шум волн и солёный бриз помогают забыть о повседневных заботах.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <input type="radio" name="accordion" id="item3" class="accordion-input">
+            <label for="item3" class="accordion-header">
+                <div class="header-content">
+                    <span class="accordion-text">Зелёный лес</span>
+            <img src="images/Les.jpg" alt="Лес" class="preview-img">
+                </div>
+                <div class="toggle-icon">+</div>
+            </label>
+            <div class="accordion-content">
+                <img src="images/Les.jpg" alt="Полный вид леса" class="full-img">
+                <p>Зелёный лес — лёгкие нашей планеты и источник жизненной энергии. Прогулка среди деревьев восстанавливает силы и проясняет мысли.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+```
+
+### CSS (style.css)
+
+```css
 :root {
-    --primary-color: #4a6fa5;
-    --text-color: #333;
-    --bg-color: #f8f9fa;
+    /* Популярные современные цвета для лучшей читаемости */
+    --primary-color: #2563eb; /* Синий — популярный акцентный цвет */
+    --primary-hover: #1d4ed8; /* Темнее при наведении */
+    --text-dark: #1e293b; /* Тёмно‑серый для основного текста */
+    --text-light: #64748b; /* Серый для второстепенного текста */
+    --bg-light: #f8fafc; /* Очень светлый голубой фон */
+    --white: #ffffff;
+    --border-color: #e2e8f0; /* Светлый серый для границ */
+    --success-color: #10b981; /* Зелёный для позитивных состояний */
     --border-radius: 12px;
-    --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 * {
@@ -11,11 +86,13 @@
 }
 
 body {
-    background: var(--bg-color);
+    background: var(--bg-light);
     min-height: 100vh;
     margin: 0;
     padding: 20px 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
 }
 
 .accordion-container {
@@ -25,15 +102,17 @@ body {
 }
 
 .accordion-item {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    background: white;
+    box-shadow: var(--shadow);
+    background: var(--white);
     position: relative;
     transition: var(--transition);
+    border: 1px solid var(--border-color);
 }
 
+/* Скрываем радиокнопки */
 .accordion-input {
     display: none;
 }
@@ -46,17 +125,16 @@ body {
     cursor: pointer;
     transition: var(--transition);
     position: relative;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: var(--white);
     border-left: 4px solid transparent;
 }
 
 @media (hover: hover) {
     .accordion-header:hover {
-        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-        transform: translateY(-3px);
-        box-shadow: 0 6px 25px rgba(74, 111, 165, 0.2);
+        background: #f1f5f9;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 15px -3px rgba(37, 99, 235, 0.1);
         border-left-color: var(--primary-color);
-        cursor: pointer;
     }
 }
 
@@ -73,23 +151,21 @@ body {
     border-radius: 8px;
     margin-right: 20px;
     transition: var(--transition);
-    filter: grayscale(10%);
-    border: 2px solid #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 2px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 @media (hover: hover) {
     .accordion-header:hover .preview-img {
-        filter: grayscale(0%);
-        transform: scale(1.08) rotate(2deg);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05) rotate(1deg);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 }
 
 .accordion-text {
     font-size: 18px;
     font-weight: 600;
-    color: var(--text-color);
+    color: var(--text-dark);
     transition: var(--transition);
 }
 
@@ -100,7 +176,6 @@ body {
     min-width: 24px;
     text-align: center;
     transition: var(--transition);
-    background: #f0f0f0;
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -113,33 +188,21 @@ body {
     max-height: 0;
     overflow: hidden;
     padding: 0 25px;
-    transition: max-height 0.5s ease, padding 0.5s ease;
-    background: #fff;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    background: var(--white);
 }
 
 .full-img {
     opacity: 0;
-    transform: translateY(-15px) scale(0.95);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(-10px) scale(0.98);
+    transition: opacity 0.4s ease, transform 0.4s ease;
     border-radius: 8px;
-    margin: 20px 0;
+    margin: 16px 0;
+    width: 100%;
+    height: auto;
 }
 
 p {
-    line-height: 1.6;
-    color: #555;
-    margin: 0 0 20px 0;
-}
-
-.accordion-input:checked ~ .accordion-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #6b8cbc 100%);
-    color: white;
-    border-left-color: #ff6b6b;
-}
-
-.accordion-input:checked ~ .accordion-header .accordion-text {
-    color: white;
-}
-
-.accordion-input:checked ~ .accordion-header .toggle-icon {
-    transform:
+    color: var(--text-light);
+    margin: 0 0 16px 0;
+    font-
