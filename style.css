@@ -23,6 +23,8 @@ box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 background: white;
 }
 
+/* скрываем radio */
+
 .accordion-input {
 display: none;
 }
@@ -32,151 +34,191 @@ display: flex;
 align-items: center;
 padding: 15px 20px;
 cursor: pointer;
-transition: background-color 0.6s ease;
+transition: background-color 0.3s ease;
 }
 
 .accordion-header:hover {
 background-color: #f0f8ff;
 }
 
-@media (hover: hover) {
+/* hover эффекты */
 
-.accordion-header:hover .preview-img {
+@media (hover:hover){
+
+.accordion-header:hover .preview-img{
 transform: scale(1.05);
-opacity: 0.8;
+opacity:0.8;
 }
 
-.accordion-header:hover .accordion-title {
-color: #0066cc;
+.accordion-header:hover .accordion-title{
+color:#0066cc;
 }
 
-.accordion-header:hover .toggle-icon {
+.accordion-header:hover .toggle-icon{
 transform: rotate(90deg);
 }
 
 }
 
-.preview-img {
-width: 60px;
-height: 40px;
-object-fit: cover;
-margin-right: 15px;
-border-radius: 4px;
-transition: all 0.6s ease;
+/* превью */
+
+.preview-img{
+width:60px;
+height:40px;
+object-fit:cover;
+margin-right:15px;
+border-radius:4px;
+transition:all .3s ease;
 }
 
-.accordion-title {
-flex-grow: 1;
-font-weight: 500;
-color: #333;
-transition: color 0.3s ease;
+/* текст */
+
+.accordion-title{
+flex-grow:1;
+font-weight:500;
+color:#333;
+transition:color .3s ease;
 }
 
-.toggle-icon {
-font-size: 20px;
-font-weight: bold;
-color: #666;
-transition: transform 0.6s ease;
+/* иконка */
+
+.toggle-icon{
+font-size:20px;
+font-weight:bold;
+color:#666;
+transition: transform .4s ease;
 }
 
-.accordion-content {
-max-height: 0;
-overflow: hidden;
-padding: 0 20px;
-transition: max-height 0.6s ease, padding 0.6s ease;
+/* скрытый контент */
+
+.accordion-content{
+max-height:0;
+overflow:hidden;
+padding:0 20px;
+transition:max-height .4s ease, padding .4s ease;
 }
 
-.full-img {
-max-width: 100%;
-height: auto;
-display: block;
-margin: 15px 0;
-opacity: 0;
-transform: translateY(-10px);
-transition: opacity 0.6s ease, transform 0.6s ease;
+/* большое изображение */
+
+.full-img{
+max-width:100%;
+height:auto;
+display:block;
+margin:15px 0;
+opacity:0;
+transform:translateY(-10px);
+transition: opacity .4s ease, transform .4s ease;
 }
 
-.accordion-input:checked ~ .accordion-content {
-max-height: 500px;
-padding: 20px;
+/* ⭐ новая анимация текста */
+
+.accordion-content p{
+opacity:0;
+transform:translateY(-10px);
+transition: opacity .4s ease, transform .4s ease;
 }
 
-.accordion-input:checked ~ .accordion-content .full-img {
-opacity: 1;
-transform: translateY(0);
+/* открытие элемента */
+
+.accordion-input:checked ~ .accordion-content{
+max-height:500px;
+padding:20px;
 }
 
-/* ИСПРАВЛЕНО */
+/* появление изображения */
 
-.accordion-input:checked + .accordion-header .toggle-icon {
+.accordion-input:checked ~ .accordion-content .full-img{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ⭐ появление текста */
+
+.accordion-input:checked ~ .accordion-content p{
+opacity:1;
+transform:translateY(0);
+}
+
+/* активный заголовок */
+
+.accordion-input:checked + .accordion-header{
+background-color:#e6f7ff;
+}
+
+/* изменение цвета текста */
+
+.accordion-input:checked + .accordion-header .accordion-title{
+color:#0066cc;
+}
+
+/* ⭐ вращение иконки + → × */
+
+.accordion-input:checked + .accordion-header .toggle-icon{
 transform: rotate(45deg);
 }
 
-.accordion-input:checked + .accordion-header {
-background-color: #e6f7ff;
-color: #0066cc;
-}
+/* адаптивность */
 
 @media screen and (max-width:320px){
 
-.accordion-container {
-padding: 0 10px;
-margin: 20px auto;
+.accordion-container{
+padding:0 10px;
+margin:20px auto;
 }
 
-.accordion-header {
-padding: 12px 15px;
+.accordion-header{
+padding:12px 15px;
 }
 
-.preview-img {
-width: 50px;
-height: 30px;
+.preview-img{
+width:50px;
+height:30px;
 }
 
-.accordion-title {
-font-size: 14px;
+.accordion-title{
+font-size:14px;
 }
 
-.toggle-icon {
-font-size: 18px;
+.toggle-icon{
+font-size:18px;
 }
 
 }
 
 @media screen and (min-width:321px) and (max-width:820px){
 
-.accordion-title {
-font-size: 16px;
+.accordion-title{
+font-size:16px;
 }
 
-.preview-img {
-width: 55px;
-height: 35px;
+.preview-img{
+width:55px;
+height:35px;
 }
 
 }
 
 @media screen and (min-width:821px){
 
-.accordion-title {
-font-size: 18px;
+.accordion-title{
+font-size:18px;
 }
 
-.preview-img {
-width: 60px;
-height: 40px;
+.preview-img{
+width:60px;
+height:40px;
 }
 
 }
 
 @media screen and (min-width:1920px){
 
-.accordion-container {
-max-width: 900px;
+.accordion-container{
+max-width:900px;
 }
 
-.accordion-title {
-font-size: 20px;
+.accordion-title{
+font-size:20px;
 }
 
 }
