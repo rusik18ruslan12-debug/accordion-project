@@ -23,8 +23,6 @@ box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 background: white;
 }
 
-/* скрываем radio */
-
 .accordion-input {
 display: none;
 }
@@ -41,7 +39,6 @@ transition: background-color 0.3s ease;
 background-color: #f0f8ff;
 }
 
-/* hover эффекты */
 
 @media (hover:hover){
 
@@ -57,10 +54,8 @@ color:#0066cc;
 .accordion-header:hover .toggle-icon{
 transform: rotate(90deg);
 }
-
 }
 
-/* превью */
 
 .preview-img{
 width:60px;
@@ -71,7 +66,6 @@ border-radius:4px;
 transition:all .3s ease;
 }
 
-/* текст */
 
 .accordion-title{
 flex-grow:1;
@@ -80,8 +74,6 @@ color:#333;
 transition:color .3s ease;
 }
 
-/* иконка */
-
 .toggle-icon{
 font-size:20px;
 font-weight:bold;
@@ -89,16 +81,12 @@ color:#666;
 transition: transform .4s ease;
 }
 
-/* скрытый контент */
-
 .accordion-content{
 max-height:0;
 overflow:hidden;
 padding:0 20px;
 transition:max-height .4s ease, padding .4s ease;
 }
-
-/* большое изображение */
 
 .full-img{
 max-width:100%;
@@ -110,7 +98,6 @@ transform:translateY(-10px);
 transition: opacity .4s ease, transform .4s ease;
 }
 
-/* ⭐ новая анимация текста */
 
 .accordion-content p{
 opacity:0;
@@ -118,46 +105,32 @@ transform:translateY(-10px);
 transition: opacity .4s ease, transform .4s ease;
 }
 
-/* открытие элемента */
-
 .accordion-input:checked ~ .accordion-content{
 max-height:500px;
 padding:20px;
 }
-
-/* появление изображения */
 
 .accordion-input:checked ~ .accordion-content .full-img{
 opacity:1;
 transform:translateY(0);
 }
 
-/* ⭐ появление текста */
-
 .accordion-input:checked ~ .accordion-content p{
 opacity:1;
 transform:translateY(0);
 }
 
-/* активный заголовок */
-
 .accordion-input:checked + .accordion-header{
 background-color:#e6f7ff;
 }
-
-/* изменение цвета текста */
 
 .accordion-input:checked + .accordion-header .accordion-title{
 color:#0066cc;
 }
 
-/* ⭐ вращение иконки + → × */
-
 .accordion-input:checked + .accordion-header .toggle-icon{
 transform: rotate(45deg);
 }
-
-/* адаптивность */
 
 @media screen and (max-width:320px){
 
