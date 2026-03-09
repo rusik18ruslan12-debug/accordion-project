@@ -1,208 +1,162 @@
-## Полный обновлённый код аккордеона с улучшенной читаемостью
-
-### HTML (index.html)
-
-```html
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Современный аккордеон</title>
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="accordion-container">
-        <div class="accordion-item">
-            <input type="radio" name="accordion" id="item1" class="accordion-input" checked>
-            <label for="item1" class="accordion-header">
-                <div class="header-content">
-                    <span class="accordion-text">Горы на закате</span>
-                    <img src="images/Gori.jpg" alt="Горы" class="preview-img">
-                </div>
-                <div class="toggle-icon">−</div>
-            </label>
-            <div class="accordion-content">
-                <img src="images/Gori.jpg" alt="Полный вид гор" class="full-img">
-                <p>Величественные горы на закате — идеальное место для отдыха и вдохновения. Кристально чистый воздух и потрясающие виды заряжают энергией на весь год.</p>
-            </div>
-        </div>
-
-        <div class="accordion-item">
-            <input type="radio" name="accordion" id="item2" class="accordion-input">
-            <label for="item2" class="accordion-header">
-                <div class="header-content">
-                    <span class="accordion-text">Спокойное море</span>
-            <img src="images/More.jpg" alt="Море" class="preview-img">
-                </div>
-                <div class="toggle-icon">+</div>
-            </label>
-            <div class="accordion-content">
-                <img src="images/More.jpg" alt="Полный вид моря" class="full-img">
-                <p>Спокойное море под ясным небом — символ гармонии и умиротворения. Шум волн и солёный бриз помогают забыть о повседневных заботах.</p>
-            </div>
-        </div>
-
-        <div class="accordion-item">
-            <input type="radio" name="accordion" id="item3" class="accordion-input">
-            <label for="item3" class="accordion-header">
-                <div class="header-content">
-                    <span class="accordion-text">Зелёный лес</span>
-            <img src="images/Les.jpg" alt="Лес" class="preview-img">
-                </div>
-                <div class="toggle-icon">+</div>
-            </label>
-            <div class="accordion-content">
-                <img src="images/Les.jpg" alt="Полный вид леса" class="full-img">
-                <p>Зелёный лес — лёгкие нашей планеты и источник жизненной энергии. Прогулка среди деревьев восстанавливает силы и проясняет мысли.</p>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
-```
-
-### CSS (style.css)
-
-```css
-:root {
-    /* Популярные современные цвета для лучшей читаемости */
-    --primary-color: #2563eb; /* Синий — популярный акцентный цвет */
-    --primary-hover: #1d4ed8; /* Темнее при наведении */
-    --text-dark: #1e293b; /* Тёмно‑серый для основного текста */
-    --text-light: #64748b; /* Серый для второстепенного текста */
-    --bg-light: #f8fafc; /* Очень светлый голубой фон */
-    --white: #ffffff;
-    --border-color: #e2e8f0; /* Светлый серый для границ */
-    --success-color: #10b981; /* Зелёный для позитивных состояний */
-    --border-radius: 12px;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
 * {
     box-sizing: border-box;
 }
 
 body {
-    background: var(--bg-light);
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px 0;
-    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-    color: var(--text-dark);
-    line-height: 1.6;
+    padding: 0;
+    background-color: #f5f5f5;
 }
 
 .accordion-container {
-    max-width: 700px;
-    margin: 30px auto;
-    padding: 0 15px;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
 .accordion-item {
-    margin-bottom: 16px;
-    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: var(--shadow);
-    background: var(--white);
-    position: relative;
-    transition: var(--transition);
-    border: 1px solid var(--border-color);
-}
-
-/* Скрываем радиокнопки */
-.accordion-input {
-    display: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: white;
 }
 
 .accordion-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 25px;
+    padding: 15px 20px;
     cursor: pointer;
-    transition: var(--transition);
-    position: relative;
-    background: var(--white);
-    border-left: 4px solid transparent;
+    transition: background-color 0.3s ease;
 }
 
-@media (hover: hover) {
-    .accordion-header:hover {
-        background: #f1f5f9;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 15px -3px rgba(37, 99, 235, 0.1);
-        border-left-color: var(--primary-color);
-    }
-}
-
-.header-content {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-}
-
-.preview-img {
-    width: 80px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-right: 20px;
-    transition: var(--transition);
-    border: 2px solid var(--border-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+.accordion-header:hover {
+    background-color: #f0f8ff;
 }
 
 @media (hover: hover) {
     .accordion-header:hover .preview-img {
-        transform: scale(1.05) rotate(1deg);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    
+    .accordion-header:hover .accordion-title {
+        color: #0066cc;
+    }
+    
+    .accordion-header:hover .toggle-icon {
+        transform: rotate(90deg);
     }
 }
 
-.accordion-text {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text-dark);
-    transition: var(--transition);
+.preview-img {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.accordion-title {
+    flex-grow: 1;
+    font-weight: 500;
+    color: #333;
+    transition: color 0.3s ease;
 }
 
 .toggle-icon {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
-    color: var(--primary-color);
-    min-width: 24px;
-    text-align: center;
-    transition: var(--transition);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: #666;
+    transition: transform 0.3s ease;
 }
 
 .accordion-content {
     max-height: 0;
     overflow: hidden;
-    padding: 0 25px;
+    padding: 0 20px;
     transition: max-height 0.4s ease, padding 0.4s ease;
-    background: var(--white);
 }
 
 .full-img {
-    opacity: 0;
-    transform: translateY(-10px) scale(0.98);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    border-radius: 8px;
-    margin: 16px 0;
-    width: 100%;
+    max-width: 100%;
     height: auto;
+    display: block;
+    margin: 15px 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-p {
-    color: var(--text-light);
-    margin: 0 0 16px 0;
-    font-
+.accordion-item.active .accordion-content {
+    max-height: 500px;
+    padding: 20px;
+}
+
+.accordion-item.active .full-img {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.accordion-item.active .toggle-icon {
+    transform: rotate(45deg);
+}
+
+/* Адаптивность и размер шрифта */
+@media screen and (max-width: 320px) {
+    .accordion-container {
+        padding: 0 10px;
+        margin: 20px auto;
+    }
+    
+    .accordion-header {
+        padding: 12px 15px;
+    }
+    
+    .preview-img {
+        width: 50px;
+        height: 30px;
+    }
+    
+    .accordion-title {
+        font-size: 14px;
+    }
+    
+    .toggle-icon {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 820px) {
+    .accordion-title {
+        font-size: 16px;
+    }
+    
+    .preview-img {
+        width: 55px;
+        height: 35px;
+    }
+}
+
+@media screen and (min-width: 821px) {
+    .accordion-title {
+        font-size: 18px;
+    }
+    
+    .preview-img {
+        width: 60px;
+        height: 40px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .accordion-container {
+        max-width: 900px;
+    }
+    
+    .accordion-title {
+        font-size: 20px;
+    }
+}
